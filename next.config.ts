@@ -1,12 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverActions: {
-    // Increase body size limit for Server Actions (default is 1MB)
-    // Set to 10MB to allow for high-quality label images
-    // This applies to all Server Actions that handle FormData
-    bodySizeLimit: "10mb",
-  },
   // Configure allowed image domains for Next.js Image component
   images: {
     remotePatterns: [
@@ -22,7 +16,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Note: api.bodyParser is for Pages Router only, not needed for App Router
+  // Note: serverActions.bodySizeLimit was removed as we now use direct upload to Supabase Storage
+  // If needed in the future, check Next.js 16+ documentation for the correct syntax
 };
 
 export default nextConfig;
