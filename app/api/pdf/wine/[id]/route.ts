@@ -86,7 +86,7 @@ export async function GET(
         }
       });
 
-      doc.on("error", (error) => {
+      doc.on("error", (error: Error) => {
         reject(error);
       });
     });
