@@ -3,7 +3,7 @@
 import { GlassCard, Badge } from "@/components/glass";
 import { GlassButton } from "@/components/glass/GlassButton";
 import type { Tasting } from "@/types/db";
-import { Star, Calendar, MapPin, Edit, Trash2, ExternalLink } from "lucide-react";
+import { Star, Calendar, MapPin, Edit, Trash2, ExternalLink, Wine } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -52,7 +52,7 @@ export function TastingsList({ tastings }: TastingsListProps) {
     return (
       <GlassCard>
         <div className="text-center py-12">
-          <UtensilsCrossed className="h-12 w-12 text-[var(--text-muted)] mx-auto mb-4" />
+          <Wine className="h-12 w-12 text-[var(--text-muted)] mx-auto mb-4" />
           <p className="text-[var(--text-secondary)] mb-4">
             Nessuna degustazione registrata.
           </p>
