@@ -272,7 +272,7 @@ export function WineFormModal({
                   control={control}
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger error={errors.wine_type?.message}>
+                      <SelectTrigger className={errors.wine_type ? "border-[var(--accent-primary)]" : ""}>
                         <SelectValue placeholder="Seleziona tipo..." />
                       </SelectTrigger>
                       <SelectContent>
@@ -309,7 +309,7 @@ export function WineFormModal({
                   control={control}
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger error={errors.country?.message}>
+                      <SelectTrigger className={errors.country ? "border-[var(--accent-primary)]" : ""}>
                         <SelectValue placeholder="Seleziona paese..." />
                       </SelectTrigger>
                       <SelectContent>
@@ -337,7 +337,7 @@ export function WineFormModal({
                     control={control}
                     render={({ field }) => (
                       <Select value={field.value || ""} onValueChange={(val) => field.onChange(val || null)}>
-                        <SelectTrigger error={errors.region?.message}>
+                        <SelectTrigger className={errors.region ? "border-[var(--accent-primary)]" : ""}>
                           <SelectValue placeholder="Seleziona regione..." />
                         </SelectTrigger>
                         <SelectContent>
