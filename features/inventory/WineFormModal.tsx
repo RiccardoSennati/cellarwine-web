@@ -47,7 +47,7 @@ export function WineFormModal({
     setValue,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<WineFormSchema>({
+  } = useForm({
     resolver: zodResolver(wineFormSchema),
     defaultValues: {
       name: "",
