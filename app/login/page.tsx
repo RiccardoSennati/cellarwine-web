@@ -21,19 +21,21 @@ function LoginForm() {
 
     try {
       const supabase = createClient();
+      // Usa NEXT_PUBLIC_SITE_URL se disponibile (configurato in Vercel), altrimenti usa window.location.origin
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
       const { data, error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${siteUrl}/auth/callback`,
         },
       });
 
       if (error) {
         // Mostra il messaggio di errore specifico di Supabase
         console.error("Supabase auth error:", error);
-        setMessage({ 
-          type: "error", 
-          text: error.message || "Si è verificato un errore. Riprova." 
+        setMessage({
+          type: "error",
+          text: error.message || "Si è verificato un errore. Riprova."
         });
       } else {
         setMessage({
@@ -44,8 +46,8 @@ function LoginForm() {
     } catch (error) {
       // Cattura errori generici (es. problemi di rete, variabili d'ambiente mancanti)
       console.error("Login error:", error);
-      const errorMessage = error instanceof Error 
-        ? error.message 
+      const errorMessage = error instanceof Error
+        ? error.message
         : "Si è verificato un errore. Verifica la configurazione di Supabase.";
       setMessage({
         type: "error",
