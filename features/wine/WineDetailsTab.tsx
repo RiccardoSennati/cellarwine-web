@@ -28,7 +28,7 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<WineFormSchema>({
+  } = useForm({
     resolver: zodResolver(wineFormSchema),
     defaultValues: {
       name: wine.name,
