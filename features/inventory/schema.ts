@@ -11,12 +11,8 @@ export const wineFormSchema = z
     // Campi obbligatori
     name: z.string().min(1, "Il nome è obbligatorio"),
     producer: z.string().min(1, "Il produttore è obbligatorio"),
-    wine_type: z.enum(["red", "white", "rosé", "orange", "sparkling", "champagne", "liquor"], {
-      required_error: "Il tipo di vino è obbligatorio",
-    }),
-    country: z.enum(["italia", "francia", "germania", "austria", "usa", "argentina", "resto-del-mondo"], {
-      required_error: "Il paese è obbligatorio",
-    }),
+    wine_type: z.enum(["red", "white", "rosé", "orange", "sparkling", "champagne", "liquor"]),
+    country: z.enum(["italia", "francia", "germania", "austria", "usa", "argentina", "resto-del-mondo"]),
     quantity: z.number().int().min(0, "La quantità deve essere >= 0"),
 
     // Campi opzionali con validazioni
@@ -48,7 +44,8 @@ export const wineFormSchema = z
   .refine(
     (data) => {
       // Validazione percentuali uvaggi: se almeno una percentuale è inserita, somma deve essere 100 (tolleranza 99-101)
-      const grapesWithPercent = data.grapes.filter((g) => g.percent !== undefined && g.percent !== null);
+      const grapes = data.grapes || [];
+      const grapesWithPercent = grapes.filter((g) => g.percent !== undefined && g.percent !== null);
       if (grapesWithPercent.length === 0) return true; // Nessuna percentuale inserita, ok
 
       const total = grapesWithPercent.reduce((sum, g) => sum + (g.percent || 0), 0);
