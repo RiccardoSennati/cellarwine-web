@@ -25,11 +25,13 @@ export const GRAPES = [
   "Garganega",
   "Cortese",
   "Moscato",
+  "Schiava",
+  "Schiava Gentile",
   "Malvasia",
   "Cannonau",
   "Cannonau",
   "Carignano",
-  
+
   // Francia
   "Pinot Noir",
   "Gamay",
@@ -56,7 +58,7 @@ export const GRAPES = [
   "Pinot Gris",
   "Sémillon",
   "Muscat",
-  
+
   // Spagna
   "Tempranillo",
   "Garnacha",
@@ -69,21 +71,21 @@ export const GRAPES = [
   "Xarel·lo",
   "Macabeo",
   "Parellada",
-  
+
   // Germania/Austria
   "Riesling",
   "Müller-Thurgau",
   "Silvaner",
   "Gewürztraminer",
   "Grüner Veltliner",
-  
+
   // Portogallo
   "Touriga Nacional",
   "Touriga Franca",
   "Tinta Roriz",
   "Baga",
   "Trincadeira",
-  
+
   // Internazionali/Nuovo Mondo
   "Zinfandel",
   "Pinotage",
@@ -93,7 +95,7 @@ export const GRAPES = [
   "Torrontés",
   "Sémillon",
   "Colombard",
-  
+
   // Altri
   "Cabernet Sauvignon",
   "Merlot",
