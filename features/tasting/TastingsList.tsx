@@ -112,12 +112,12 @@ export function TastingsList({ tastings }: TastingsListProps) {
               {tasting.aromatic_families && tasting.aromatic_families.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-3">
                   {tasting.aromatic_families.slice(0, 5).map((family, idx) => (
-                    <Badge key={idx} variant="default" size="sm">
+                    <Badge key={idx} variant="default">
                       {family}
                     </Badge>
                   ))}
                   {tasting.aromatic_families.length > 5 && (
-                    <Badge variant="default" size="sm">
+                    <Badge variant="default">
                       +{tasting.aromatic_families.length - 5}
                     </Badge>
                   )}

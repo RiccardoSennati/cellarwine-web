@@ -147,7 +147,7 @@ export function WineStatsView({ stats }: StatsViewProps) {
                 <div key={wine.wine_id} className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <Badge variant="rating" size="sm">
+                      <Badge variant="rating">
                         #{idx + 1}
                       </Badge>
                       <Link
