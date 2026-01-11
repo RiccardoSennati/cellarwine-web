@@ -8,7 +8,7 @@ import { MovementsTab } from "./MovementsTab";
 import { ExportTab } from "./ExportTab";
 import type { Wine, Tasting, Movement } from "@/types/db";
 import { useRouter } from "next/navigation";
-import { FileText, Wine, Package, Download } from "lucide-react";
+import { FileText, Wine as WineIcon, Package, Download } from "lucide-react";
 
 interface WineTabsClientProps {
   wine: Wine;
@@ -18,7 +18,7 @@ interface WineTabsClientProps {
 
 const tabs = [
   { id: "details", label: "Scheda", icon: <FileText className="h-4 w-4" /> },
-  { id: "tastings", label: "Degustazioni", icon: <Wine className="h-4 w-4" /> },
+  { id: "tastings", label: "Degustazioni", icon: <WineIcon className="h-4 w-4" /> },
   { id: "movements", label: "Movimenti", icon: <Package className="h-4 w-4" /> },
   { id: "export", label: "Export", icon: <Download className="h-4 w-4" /> },
 ];
