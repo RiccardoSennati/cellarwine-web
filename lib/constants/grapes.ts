@@ -9,6 +9,7 @@ export const GRAPES = [
   "Aglianico",
   "Nero d'Avola",
   "Corvina",
+  "Corvinone",
   "Rondinella",
   "Molinara",
   "Montepulciano",
