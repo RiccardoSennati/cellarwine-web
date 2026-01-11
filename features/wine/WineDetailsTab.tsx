@@ -422,6 +422,23 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
           />
         </div>
 
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+            Uvaggi
+          </label>
+          <Controller
+            name="grapes"
+            control={control}
+            render={({ field }) => (
+              <GrapesMultiSelect
+                grapes={field.value || []}
+                onChange={field.onChange}
+                error={errors.grapes?.message || (errors.grapes?.root?.message as string)}
+              />
+            )}
+          />
+        </div>
+
         <GlassTextarea
           label="Storia"
           {...register("story")}
