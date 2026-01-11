@@ -1,6 +1,5 @@
-import type { PDFDocument } from "pdfkit";
 import type { Wine } from "@/types/db";
-import { COLORS } from "./utils";
+import { PDFDocument, COLORS } from "./utils";
 import { formatGrapes, normalizeText, truncateText } from "./wine-helpers";
 
 /**
