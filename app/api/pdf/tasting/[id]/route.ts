@@ -59,7 +59,7 @@ export async function GET(
 
     // Set response headers
     const chunks: Buffer[] = [];
-    doc.on("data", (chunk) => chunks.push(chunk));
+    doc.on("data", (chunk: Buffer) => chunks.push(chunk));
 
     // Header
     addHeader(doc, `Degustazione: ${wine.name}`);
