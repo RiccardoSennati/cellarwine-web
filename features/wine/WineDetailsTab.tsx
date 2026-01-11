@@ -46,6 +46,7 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
       readiness_status: wine.readiness_status || undefined,
       drink_from: wine.drink_from || undefined,
       drink_until: wine.drink_until || undefined,
+      story: wine.story || undefined,
       notes: wine.notes || undefined,
       label_image_url: wine.label_image_url || undefined,
     },
@@ -249,6 +250,14 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
                 <p className="text-[var(--text-primary)]">{wine.drink_until}</p>
               </div>
             )}
+            {wine.story && (
+              <div>
+                <span className="text-sm text-[var(--text-muted)]">Storia</span>
+                <p className="text-[var(--text-primary)] whitespace-pre-wrap">
+                  {wine.story}
+                </p>
+              </div>
+            )}
             {wine.notes && (
               <div>
                 <span className="text-sm text-[var(--text-muted)]">Note</span>
@@ -391,6 +400,13 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
             error={errors.location?.message}
           />
         </div>
+
+        <GlassTextarea
+          label="Storia"
+          {...register("story")}
+          error={errors.story?.message}
+          rows={6}
+        />
 
         <GlassTextarea
           label="Note"
