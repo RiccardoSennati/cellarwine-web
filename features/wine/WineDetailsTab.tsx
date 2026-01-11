@@ -2,12 +2,13 @@
 
 import { useState, useRef } from "react";
 import { GlassCard, GlassInput, GlassTextarea, GlassButton } from "@/components/glass";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { wineFormSchema, type WineFormSchema } from "@/features/inventory/schema";
 import { updateWine } from "@/features/inventory/actions";
 import { deleteLabelImage } from "./actions";
-import type { Wine } from "@/types/db";
+import { GrapesMultiSelect } from "@/components/wine/GrapesMultiSelect";
+import type { Wine, Grape } from "@/types/db";
 import Image from "next/image";
 
 interface WineDetailsTabProps {
@@ -26,6 +27,7 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     reset,
   } = useForm({
@@ -46,6 +48,12 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
       readiness_status: wine.readiness_status || undefined,
       drink_from: wine.drink_from || undefined,
       drink_until: wine.drink_until || undefined,
+      grapes: Array.isArray(wine.grapes)
+        ? wine.grapes.map((g: any) => ({
+            name: typeof g === "string" ? g : g.name || "",
+            percent: typeof g === "object" && g.percent ? g.percent : undefined,
+          }))
+        : [],
       story: wine.story || undefined,
       notes: wine.notes || undefined,
       label_image_url: wine.label_image_url || undefined,
@@ -203,6 +211,19 @@ export function WineDetailsTab({ wine, onUpdate }: WineDetailsTabProps) {
               <div>
                 <span className="text-sm text-[var(--text-muted)]">Denominazione</span>
                 <p className="text-[var(--text-primary)]">{wine.appellation}</p>
+              </div>
+            )}
+            {wine.grapes && Array.isArray(wine.grapes) && wine.grapes.length > 0 && (
+              <div>
+                <span className="text-sm text-[var(--text-muted)]">Uvaggi</span>
+                <p className="text-[var(--text-primary)]">
+                  {wine.grapes
+                    .map((g: Grape | string) => {
+                      if (typeof g === "string") return g;
+                      return g.percent ? `${g.name} ${g.percent}%` : g.name;
+                    })
+                    .join(", ")}
+                </p>
               </div>
             )}
           </div>
