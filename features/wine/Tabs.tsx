@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 interface Tab {
   id: string;
   label: string;
-  icon?: string;
+  icon?: React.ReactNode;
 }
 
 interface TabsProps {
