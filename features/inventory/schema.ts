@@ -24,7 +24,7 @@ export const wineFormSchema = z
       .optional()
       .nullable(),
     region: z.string().optional().nullable(),
-    grapes: z.array(grapeSchema).default([]),
+    grapes: z.preprocess((val) => (Array.isArray(val) ? val : []), z.array(grapeSchema)),
     abv: z.number().min(0, "Grado alcolico non valido").max(20, "Grado alcolico non valido (max 20%)").optional().nullable(),
     price: z.number().min(0, "Il prezzo deve essere >= 0").optional().nullable(),
     currency: z.string().default("EUR").optional(),
