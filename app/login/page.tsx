@@ -21,7 +21,7 @@ function LoginForm() {
 
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOtp({
+      const { data, error } = await supabase.auth.signInWithOtp({
         email,
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
@@ -29,7 +29,12 @@ function LoginForm() {
       });
 
       if (error) {
-        setMessage({ type: "error", text: error.message });
+        // Mostra il messaggio di errore specifico di Supabase
+        console.error("Supabase auth error:", error);
+        setMessage({ 
+          type: "error", 
+          text: error.message || "Si è verificato un errore. Riprova." 
+        });
       } else {
         setMessage({
           type: "success",
@@ -37,9 +42,14 @@ function LoginForm() {
         });
       }
     } catch (error) {
+      // Cattura errori generici (es. problemi di rete, variabili d'ambiente mancanti)
+      console.error("Login error:", error);
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : "Si è verificato un errore. Verifica la configurazione di Supabase.";
       setMessage({
         type: "error",
-        text: "Si è verificato un errore. Riprova.",
+        text: errorMessage,
       });
     } finally {
       setLoading(false);
